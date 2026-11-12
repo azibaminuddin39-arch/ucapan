@@ -313,3 +313,9 @@ document.getElementById('replayBtn').addEventListener('click', () => {
   candleHint.textContent = 'Buat harapan & ketuk lilin untuk meniupnya';
   showStage(stageEnvelope);
 });
+// Menghentikan musik otomatis saat halaman disembunyikan / ditinggalkan
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden && isPlaying) {
+    stopMusic(); // Menghentikan melodi kotak musik
+  }
+});
