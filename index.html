@@ -1,1 +1,64 @@
 
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Ulang Tahun ke-18, Alya Kamila!</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Mengimpor font estetis dari Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Canvas untuk animasi kelopak bunga musim semi berguguran -->
+    <canvas id="sakuraCanvas"></canvas>
+
+    <!-- Siluet Pohon Musim Semi di sisi kiri bawah -->
+    <div class="tree-container">
+        <svg viewBox="0 0 500 500" class="spring-tree" xmlns="http://www.w3.org/2000/svg">
+            <!-- Batang dan Ranting Pohon -->
+            <path d="M90,500 C100,400 130,330 110,240 C95,180 60,140 30,90 M110,240 C150,190 210,160 270,110 M135,210 C180,215 230,235 280,220 M105,310 C160,290 200,300 245,280 M95,170 C115,120 145,80 185,45" 
+                  stroke="#4a3228" stroke-width="14" stroke-linecap="round" fill="none"/>
+            <path d="M110,240 C150,190 210,160 270,110 M135,210 C180,215 230,235 280,220 M105,310 C160,290 200,300 245,280 M95,170 C115,120 145,80 185,45" 
+                  stroke="#5c3e32" stroke-width="8" stroke-linecap="round" fill="none"/>
+            
+            <!-- Rimbunan Bunga Musim Semi (Sakura) -->
+            <g class="blossom-clusters">
+                <circle cx="40" cy="95" r="45" fill="#ffb7c5" opacity="0.9"/>
+                <circle cx="95" cy="65" r="55" fill="#ff9eb5" opacity="0.85"/>
+                <circle cx="180" cy="50" r="50" fill="#ffc2d1" opacity="0.9"/>
+                <circle cx="265" cy="110" r="60" fill="#ffb7c5" opacity="0.9"/>
+                <circle cx="210" cy="145" r="45" fill="#ff8fab" opacity="0.8"/>
+                <circle cx="280" cy="215" r="50" fill="#ffc2d1" opacity="0.9"/>
+                <circle cx="240" cy="275" r="42" fill="#ffb7c5" opacity="0.85"/>
+                <circle cx="145" cy="125" r="65" fill="#ffccd5" opacity="0.85"/>
+                <circle cx="75" cy="155" r="48" fill="#ff9eb5" opacity="0.85"/>
+                <circle cx="195" cy="195" r="40" fill="#ffe5ec" opacity="0.9"/>
+            </g>
+        </svg>
+    </div>
+
+    <!-- Kontainer Utama Kartu Ucapan -->
+    <main class="container">
+        <div class="greeting-card" id="greetingCard">
+            <div class="badge">30 November • 18 Tahun</div>
+            <h2 class="subtitle">Happy 18th Birthday</h2>
+            <h1 class="name">Alya Kamila</h1>
+            
+            <div class="divider">🌸</div>
+            
+            <p class="message">
+                Selamat memasuki usia ke-18! Seperti bunga musim semi yang bermekaran indah, 
+                semoga langkahmu selalu dipenuhi kebahagiaan, keberanian untuk meraih mimpi-mimpi besar, 
+                dan cinta dari orang-orang di sekitarmu.
+            </p>
+            
+            <button id="celebrateBtn" class="btn-celebrate">Taburkan Bunga ✨</button>
+        </div>
+    </main>
+
+    <!-- Menghubungkan ke file JavaScript sesuai nama file Anda -->
+    <script src="scrip.js"></script>
+</body>
+</html>
