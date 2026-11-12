@@ -1,59 +1,23 @@
-let audioCtx = null;
+const bgMusic = document.getElementById('bgMusic');
 let isPlaying = false;
-let melodyTimer = null;
-
-const melodyNotes = [
-  { f: 261.63, d: 0.35 }, { f: 261.63, d: 0.25 }, { f: 293.66, d: 0.6 }, { f: 261.63, d: 0.6 }, { f: 349.23, d: 0.6 }, { f: 329.63, d: 1.1 },
-  { f: 261.63, d: 0.35 }, { f: 261.63, d: 0.25 }, { f: 293.66, d: 0.6 }, { f: 261.63, d: 0.6 }, { f: 392.00, d: 0.6 }, { f: 349.23, d: 1.1 },
-  { f: 261.63, d: 0.35 }, { f: 261.63, d: 0.25 }, { f: 523.25, d: 0.6 }, { f: 440.00, d: 0.6 }, { f: 349.23, d: 0.6 }, { f: 329.63, d: 0.6 }, { f: 293.66, d: 1.1 },
-  { f: 466.16, d: 0.35 }, { f: 466.16, d: 0.25 }, { f: 440.00, d: 0.6 }, { f: 349.23, d: 0.6 }, { f: 392.00, d: 0.6 }, { f: 349.23, d: 1.2 }
-];
-
-function playNote(freq, duration) {
-  if (!audioCtx) return;
-  const osc = audioCtx.createOscillator();
-  const gain = audioCtx.createGain();
-  osc.type = 'sine';
-  osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-
-  gain.gain.setValueAtTime(0.001, audioCtx.currentTime);
-  gain.gain.exponentialRampToValueAtTime(0.09, audioCtx.currentTime + 0.04);
-  gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration * 0.95);
-
-  osc.connect(gain);
-  gain.connect(audioCtx.destination);
-
-  osc.start();
-  osc.stop(audioCtx.currentTime + duration);
-}
 
 function startMusic() {
-  if (isPlaying) return;
-  if (!audioCtx) {
-    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  if (!isPlaying && bgMusic) {
+    bgMusic.play().then(() => {
+      isPlaying = true;
+      updateMusicUI();
+    }).catch(error => {
+      console.log("Autoplay dicegah oleh browser:", error);
+    });
   }
-  if (audioCtx.state === 'suspended') {
-    audioCtx.resume();
-  }
-  isPlaying = true;
-  updateMusicUI();
-
-  let index = 0;
-  function scheduleNext() {
-    if (!isPlaying) return;
-    const note = melodyNotes[index];
-    playNote(note.f, note.d);
-    index = (index + 1) % melodyNotes.length;
-    const pause = index === 0 ? 1400 : note.d * 780;
-    melodyTimer = setTimeout(scheduleNext, pause);
-  }
-  scheduleNext();
 }
 
 function stopMusic() {
-  isPlaying = false;
-  clearTimeout(melodyTimer);
-  updateMusicUI();
+  if (isPlaying && bgMusic) {
+    bgMusic.pause();
+    isPlaying = false;
+    updateMusicUI();
+  }
 }
 
 function updateMusicUI() {
@@ -313,9 +277,9 @@ document.getElementById('replayBtn').addEventListener('click', () => {
   candleHint.textContent = 'Buat harapan & ketuk lilin untuk meniupnya';
   showStage(stageEnvelope);
 });
-// Menghentikan musik otomatis saat halaman disembunyikan / ditinggalkan
+
 document.addEventListener('visibilitychange', () => {
   if (document.hidden && isPlaying) {
-    stopMusic(); // Menghentikan melodi kotak musik
+    stopMusic();
   }
 });
