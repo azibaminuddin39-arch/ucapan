@@ -1,64 +1,136 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Selamat Ulang Tahun ke-18, Alya Kamila!</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Mengimpor font estetis dari Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Selamat Ulang Tahun ke-18, Alya Kamila</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Great+Vibes&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-    <!-- Canvas untuk animasi kelopak bunga musim semi berguguran -->
-    <canvas id="sakuraCanvas"></canvas>
+  <div class="bg-glow"></div>
 
-    <!-- Siluet Pohon Musim Semi di sisi kiri bawah -->
-    <div class="tree-container">
-        <svg viewBox="0 0 500 500" class="spring-tree" xmlns="http://www.w3.org/2000/svg">
-            <!-- Batang dan Ranting Pohon -->
-            <path d="M90,500 C100,400 130,330 110,240 C95,180 60,140 30,90 M110,240 C150,190 210,160 270,110 M135,210 C180,215 230,235 280,220 M105,310 C160,290 200,300 245,280 M95,170 C115,120 145,80 185,45" 
-                  stroke="#4a3228" stroke-width="14" stroke-linecap="round" fill="none"/>
-            <path d="M110,240 C150,190 210,160 270,110 M135,210 C180,215 230,235 280,220 M105,310 C160,290 200,300 245,280 M95,170 C115,120 145,80 185,45" 
-                  stroke="#5c3e32" stroke-width="8" stroke-linecap="round" fill="none"/>
-            
-            <!-- Rimbunan Bunga Musim Semi (Sakura) -->
-            <g class="blossom-clusters">
-                <circle cx="40" cy="95" r="45" fill="#ffb7c5" opacity="0.9"/>
-                <circle cx="95" cy="65" r="55" fill="#ff9eb5" opacity="0.85"/>
-                <circle cx="180" cy="50" r="50" fill="#ffc2d1" opacity="0.9"/>
-                <circle cx="265" cy="110" r="60" fill="#ffb7c5" opacity="0.9"/>
-                <circle cx="210" cy="145" r="45" fill="#ff8fab" opacity="0.8"/>
-                <circle cx="280" cy="215" r="50" fill="#ffc2d1" opacity="0.9"/>
-                <circle cx="240" cy="275" r="42" fill="#ffb7c5" opacity="0.85"/>
-                <circle cx="145" cy="125" r="65" fill="#ffccd5" opacity="0.85"/>
-                <circle cx="75" cy="155" r="48" fill="#ff9eb5" opacity="0.85"/>
-                <circle cx="195" cy="195" r="40" fill="#ffe5ec" opacity="0.9"/>
-            </g>
-        </svg>
+  <!-- Tombol Musik -->
+  <button class="music-btn" id="musicToggle" aria-label="Putar atau jeda musik">
+    <span id="musicIcon">♪</span>
+    <span id="musicLabel">Putar Musik</span>
+  </button>
+
+  <!-- TAHAP 1: AMPLOP PEMBUKA -->
+  <section class="stage active" id="stage-envelope">
+    <p class="envelope-prompt">Ada sebuah kejutan kecil untukmu...</p>
+    <div class="envelope-wrapper" id="envelopeBox" role="button" tabindex="0" aria-label="Buka amplop ucapan">
+      <div class="envelope-back"></div>
+      <div class="envelope-letter">
+        <h4>Untuk Alya Kamila</h4>
+        <p>30 November • Spesial ke-18</p>
+      </div>
+      <div class="envelope-front"></div>
+      <div class="envelope-bottom"></div>
+      <div class="envelope-flap"></div>
+      <div class="wax-seal">
+        <span>Open<br>Me</span>
+      </div>
     </div>
+  </section>
 
-    <!-- Kontainer Utama Kartu Ucapan -->
-    <main class="container">
-        <div class="greeting-card" id="greetingCard">
-            <div class="badge">30 November • 18 Tahun</div>
-            <h2 class="subtitle">Happy 18th Birthday</h2>
-            <h1 class="name">Alya Kamila</h1>
-            
-            <div class="divider">🌸</div>
-            
-            <p class="message">
-                Selamat memasuki usia ke-18! Seperti bunga musim semi yang bermekaran indah, 
-                semoga langkahmu selalu dipenuhi kebahagiaan, keberanian untuk meraih mimpi-mimpi besar, 
-                dan cinta dari orang-orang di sekitarmu.
-            </p>
-            
-            <button id="celebrateBtn" class="btn-celebrate">Taburkan Bunga ✨</button>
+  <!-- TAHAP 2: KALENDER 30 NOVEMBER -->
+  <section class="stage" id="stage-calendar">
+    <div class="calendar-card">
+      <span class="calendar-badge">Save The Special Date</span>
+      <div class="calendar-header">
+        <h2>November</h2>
+        <p>Hari istimewa ketika seseorang yang luar biasa lahir</p>
+      </div>
+
+      <div class="calendar-grid">
+        <div class="cal-day-name">Min</div>
+        <div class="cal-day-name">Sen</div>
+        <div class="cal-day-name">Sel</div>
+        <div class="cal-day-name">Rab</div>
+        <div class="cal-day-name">Kam</div>
+        <div class="cal-day-name">Jum</div>
+        <div class="cal-day-name">Sab</div>
+
+        <div class="cal-date">1</div>
+        <div class="cal-date">2</div>
+        <div class="cal-date">3</div>
+        <div class="cal-date">4</div>
+        <div class="cal-date">5</div>
+        <div class="cal-date">6</div>
+        <div class="cal-date">7</div>
+        <div class="cal-date">8</div>
+        <div class="cal-date">9</div>
+        <div class="cal-date">10</div>
+        <div class="cal-date">11</div>
+        <div class="cal-date">12</div>
+        <div class="cal-date">13</div>
+        <div class="cal-date">14</div>
+        <div class="cal-date">15</div>
+        <div class="cal-date">16</div>
+        <div class="cal-date">17</div>
+        <div class="cal-date">18</div>
+        <div class="cal-date">19</div>
+        <div class="cal-date">20</div>
+        <div class="cal-date">21</div>
+        <div class="cal-date">22</div>
+        <div class="cal-date">23</div>
+        <div class="cal-date">24</div>
+        <div class="cal-date">25</div>
+        <div class="cal-date">26</div>
+        <div class="cal-date">27</div>
+        <div class="cal-date">28</div>
+        <div class="cal-date">29</div>
+        <div class="cal-date birthday-highlight" id="date30" title="Hari Ulang Tahun Alya Kamila!">30</div>
+        <div class="cal-date empty"></div>
+        <div class="cal-date empty"></div>
+        <div class="cal-date empty"></div>
+        <div class="cal-date empty"></div>
+        <div class="cal-date empty"></div>
+      </div>
+
+      <div class="calendar-note">
+        ✨ 30 November — Selamat Ulang Tahun ke-18, Alya Kamila! ✨
+      </div>
+
+      <button class="btn-primary" id="toCelebrationBtn">Lihat Ucapan & Mekarnya Musim Semi →</button>
+    </div>
+  </section>
+
+  <!-- TAHAP 3: POHON MUSIM SEMI & KARTU UCAPAN -->
+  <section class="stage" id="stage-celebration">
+    <canvas id="springCanvas"></canvas>
+
+    <div class="celebration-card">
+      <span class="age-pill">Chapter 18 • Sweet Eighteen</span>
+      <h2 class="celebration-title">Selamat Ulang Tahun ke-18</h2>
+      <h1 class="celebration-name">Alya Kamila</h1>
+      <p class="celebration-date">30 November</p>
+
+      <p class="celebration-message">
+        Seperti bunga musim semi yang bermekaran hangat dan indah di setiap kelopaknya,
+        semoga di usia 18 tahun ini setiap langkahmu selalu dipenuhi kebahagiaan,
+        kesehatan, kedamaian, serta impian-impian indah yang satu per satu menjadi nyata.
+      </p>
+
+      <div class="candle-box" id="candleBox" title="Klik untuk meniup lilin">
+        <div class="flame-wrap">
+          <div class="flame" id="candleFlame"></div>
         </div>
-    </main>
+        <div class="candle-body">18</div>
+        <span class="candle-hint" id="candleHint">Buat harapan & ketuk lilin untuk meniupnya</span>
+      </div>
 
-    <!-- Menghubungkan ke file JavaScript sesuai nama file Anda -->
-    <script src="scrip.js"></script>
+      <div class="action-row">
+        <button class="btn-outline" id="burstPetalsBtn">Taburkan Kelopak Bunga 🌸</button>
+        <button class="btn-outline" id="replayBtn">Ulangi dari Amplop ↺</button>
+      </div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
 </body>
 </html>
